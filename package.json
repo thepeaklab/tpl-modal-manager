@@ -1,0 +1,36 @@
+{
+  "name": "tpl-modal-manager",
+  "version": "0.1.0",
+  "description": "Angular service for registering modals which can be closed on state change",
+  "main": "dist/tpl.modal-manager.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "(rm -fr .tmp & rm -fr dist) && (mkdir .tmp & mkdir dist)",
+    "clean:tmp": "rm -fr .tmp",
+    "lint": "jshint lib/*.js",
+    "concat": "cat lib/*.js > .tmp/concatenated.js",
+    "annotate": "ng-annotate --add .tmp/concatenated.js > .tmp/annotated.js",
+    "uglify": "uglifyjs .tmp/annotated.js -o dist/tpl.modal-manager.min.js",
+    "prebuild": "npm run clean & npm run lint",
+    "build": "npm run concat && npm run annotate && npm run uglify",
+    "postbuild": "npm run clean:tmp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@stash.thepeaklab.biz:7999/open/tpl-modal-manager.git"
+  },
+  "keywords": [
+    "tpl",
+    "modal",
+    "manager",
+    "angularjs",
+    "angular"
+  ],
+  "author": "Christian Elies <ce@thepeaklab.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "ng-annotate": "^1.0.1",
+    "uglifyjs": "^2.4.10"
+  }
+}
